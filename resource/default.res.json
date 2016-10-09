@@ -1,0 +1,75 @@
+{
+	"groups": [
+		{
+			"keys": "bgg_jpg,egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,Fade_mp3,music_jpg",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bgg_jpg"
+		},
+		{
+			"url": "assets/egret_icon.png",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/star.jpg",
+			"type": "image",
+			"name": "star_jpg"
+		},
+		{
+			"url": "assets/head.jpg",
+			"type": "image",
+			"name": "head_jpg"
+		},
+		{
+			"url": "assets/logo.jpg",
+			"type": "image",
+			"name": "logo_jpg"
+		},
+		{
+			"url": "assets/stara.jpg",
+			"type": "image",
+			"name": "stara_jpg"
+		},
+		{
+			"url": "assets/dawn.jpg",
+			"type": "image",
+			"name": "dawn_jpg"
+		},
+		{
+			"url": "assets/earth.jpg",
+			"type": "image",
+			"name": "earth_jpg"
+		},
+		{
+			"url": "assets/eye.jpg",
+			"type": "image",
+			"name": "eye_jpg"
+		},
+		{
+			"url": "assets/eye.jpg",
+			"type": "image",
+			"name": "eye2_jpg"
+		},
+		{
+			"url": "assets/Fade.mp3",
+			"type": "sound",
+			"name": "Fade_mp3"
+		},
+		{
+			"url": "assets/music.jpg",
+			"type": "image",
+			"name": "music_jpg"
+		}
+	]
+}
