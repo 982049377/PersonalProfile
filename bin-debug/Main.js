@@ -336,7 +336,6 @@ var Main = (function (_super) {
         textfield.x = 172;
         textfield.y = 135;
         this.textfield = textfield;
-        this;
         var Mask = new egret.Shape();
         Mask.graphics.beginFill(0x000000, 0.5);
         Mask.graphics.drawRect(0, 0, stageW, 600);
