@@ -125,10 +125,11 @@ class Main extends egret.DisplayObjectContainer {
         // var num=3;
         
         //滑动页面；
-        function MovePage(e:Pages){
+      /*  function MovePage(e:Pages):void{
             e.addEventListener(egret.TouchEvent.TOUCH_BEGIN,e.mouseDown,this);
             e.addEventListener(egret.TouchEvent.TOUCH_END,e.mouseUp,this);
         }
+        */
     /**
      * 创建主页
      * Create a game scene
@@ -138,7 +139,8 @@ class Main extends egret.DisplayObjectContainer {
         index.width=stageW;
         index.height=stageH;
         this.addChild(index);
-        MovePage(index);
+        //MovePage(index);
+        index.MovePage(index);
 
         var sky:egret.Bitmap = this.createBitmapByName("earth_jpg");
         index.addChild(sky);
@@ -164,7 +166,8 @@ class Main extends egret.DisplayObjectContainer {
         FirstPage.width=stageW;
         FirstPage.height=stageH;
         this.addChild(FirstPage);
-        MovePage(FirstPage);
+        //MovePage(FirstPage);
+        FirstPage.MovePage(FirstPage);
 
         var sky:egret.Bitmap = this.createBitmapByName("dawn_jpg");
         FirstPage.addChild(sky);
@@ -270,7 +273,8 @@ function onMove(e:egret.TouchEvent){
         SecondPage.width=stageW;
         SecondPage.height=stageH;
         this.addChild(SecondPage);
-        MovePage(SecondPage);
+        //MovePage(SecondPage);
+        SecondPage.MovePage(SecondPage);
 
         var sky:egret.Bitmap = this.createBitmapByName("stara_jpg");
         SecondPage.addChild(sky);

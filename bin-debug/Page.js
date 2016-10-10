@@ -4,20 +4,25 @@ var Pages = (function (_super) {
         _super.call(this);
         this._touchStatus = false; //当前触摸状态，按下时，值为true
         this._distance = new egret.Point(); //鼠标点击时，鼠标全局坐标与_bird的位置差
-        this.once(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        //this.once( egret.Event.ADDED_TO_STAGE, this.onAddToStage, this );
     }
     var d = __define,c=Pages,p=c.prototype;
-    p.onAddToStage = function (event) {
+    /*private onAddToStage(event:egret.Event)
+    {
         this.touchEnabled = true;
         this.parent.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.mouseDown, this);
         this.parent.addEventListener(egret.TouchEvent.TOUCH_END, this.mouseUp, this);
+    }*/
+    p.MovePage = function (e) {
+        this.touchEnabled = true;
+        e.addEventListener(egret.TouchEvent.TOUCH_BEGIN, e.mouseDown, this);
+        e.addEventListener(egret.TouchEvent.TOUCH_END, e.mouseUp, this);
     };
     p.mouseDown = function (evt) {
         console.log("Mouse Down.");
         this._touchStatus = true;
         //this._distance.x = evt.stageX - this.x;
-        var i = this.parent.$getY();
-        this._distance.y = evt.stageY - i;
+        this._distance.y = evt.stageY - this.parent.$getY();
         this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.mouseMove, this);
     };
     p.mouseMove = function (evt) {
