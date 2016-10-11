@@ -115,14 +115,10 @@ class Music extends egret.DisplayObjectContainer {
         stopTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             if (this._channel) {
                 this._pauseTime = 0;
-                
                 this.stop();
-                
                 this.onTimeUpdate();
             }
-
             this.setAllAbled(false);
-
         }, this);
         this.addChild(stopTxt);
 
@@ -136,14 +132,11 @@ class Music extends egret.DisplayObjectContainer {
         pauseTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             if (this._channel) {
                 this._pauseTime = this._channel.position;
-                
                 this.stop();
             }
-
             this.setAllAbled(false);
         }, this);
         this.addChild(pauseTxt);
-
         this.setAllAbled(false);
         
         var bg:egret.Shape = new egret.Shape();

@@ -6,25 +6,39 @@ var IndexPage = (function (_super) {
     }
     var d = __define,c=IndexPage,p=c.prototype;
     p.loadSound = function () {
-        var sound = this._sound = new egret.Sound();
+        var sound = new egret.Sound();
         //sound 加载完成监听
-        sound.addEventListener(egret.Event.COMPLETE, function (e) {
-            this.init();
-        }, this);
-        sound.load("resource/assets/Fade.mp3");
-    };
-    p.setAllAbled = function (isPlaying) {
-        this.setTextAbled(this._playTxt, !isPlaying);
-        this.setTextAbled(this._stopTxt, isPlaying);
-        this.setTextAbled(this._pauseTxt, isPlaying);
-    };
-    p.setTextAbled = function (text, touchEnabled) {
-        text.touchEnabled = touchEnabled;
-        if (touchEnabled) {
-            text.textColor = 0xffffff;
+        this._sound = sound = RES.getRes("Fade_mp3");
+        this._channel = sound.play(0, 0);
+        var Anim_point = 0; //定义按钮模式
+        var stop_time = 0;
+        this.music = this.createBitmapByName("music1_jpg");
+        this.music.x = 20 + this.music.width / 2;
+        this.music.y = 45 + this.music.height / 2;
+        this.music.scaleX = 0.4;
+        this.music.scaleY = 0.4;
+        this.music.$alpha = 1;
+        changeanchor(this.music);
+        this.addChild(this.music);
+        this.music.touchEnabled = true;
+        //stop
+        this.music.addEventListener(egret.TouchEvent.TOUCH_TAP, changeAnim, this);
+        function changeanchor(icon) {
+            icon.anchorOffsetX = icon.width / 2;
+            icon.anchorOffsetY = icon.height / 2; //改变锚点位置
         }
-        else {
-            text.textColor = 0x999999;
+        function changeAnim(e) {
+            Anim_point = (Anim_point + 1) % 2;
+            switch (Anim_point) {
+                case 0:
+                    this._channel = this._sound.play(stop_time, 0);
+                    break;
+                case 1:
+                    stop_time = this._channel.position;
+                    this._channel.stop();
+                    this._channel = null;
+                    break;
+            }
         }
     };
     //播放
@@ -47,22 +61,13 @@ var IndexPage = (function (_super) {
     p.onComplete = function (e) {
         console.log("播放完成");
         this.stop();
-        this.setAllAbled(false);
-        this.setProgress(0);
+        this.music.touchEnabled = false;
+        //this.setProgress(0);
     };
     //更新进度
     p.onTimeUpdate = function (e) {
         var position = this._channel ? this._channel.position : 0;
-        this.setProgress(position);
-    };
-    p.setProgress = function (position) {
-        this._updateTxt.text = position.toFixed(1) + "/" + this._sound.length.toFixed(1);
-        var w = (position / this._sound.length) * 400;
-        this._bar.x = w + this.stage.stageWidth / 2 - 200;
-        var mask = this._progress.mask || new egret.Rectangle(0, 0, 0, 60);
-        mask.x = w;
-        mask.width = 400 - w;
-        this._progress.mask = mask;
+        //this.setProgress(position);
     };
     p.Creat = function (Width, Hight) {
         /**
@@ -89,55 +94,7 @@ var IndexPage = (function (_super) {
          bgmusic.scaleY=0.4;
          IndexPage.addChild(bgmusic);
  */
-        var music = this.createBitmapByName("music1_jpg");
-        music.x = 20;
-        music.y = 45;
-        music.scaleX = 0.4;
-        music.scaleY = 0.4;
-        music.$alpha = 1;
-        this.addChild(music);
-        var playTxt = new egret.TextField();
-        playTxt.text = "播放";
-        playTxt.size = 60;
-        playTxt.x = 80;
-        playTxt.y = 400;
-        playTxt.touchEnabled = true;
-        //music.touchEnabled=true;
-        playTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            this.play();
-            this.setAllAbled(true);
-        }, this);
-        this.addChild(playTxt);
-        //stop
-        var stopTxt = new egret.TextField();
-        stopTxt.text = "停止";
-        stopTxt.size = 60;
-        stopTxt.x = playTxt.x + 180 * 1;
-        stopTxt.y = 400;
-        stopTxt.touchEnabled = true;
-        stopTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            if (this._channel) {
-                this._pauseTime = 0;
-                this.stop();
-                this.onTimeUpdate();
-            }
-            this.setAllAbled(false);
-        }, this);
-        this.addChild(stopTxt);
-        //pause 
-        var pauseTxt = new egret.TextField();
-        pauseTxt.text = "暂停";
-        pauseTxt.size = 60;
-        pauseTxt.x = playTxt.x + 180 * 2;
-        pauseTxt.y = 400;
-        pauseTxt.touchEnabled = true;
-        pauseTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            if (this._channel) {
-                this._pauseTime = this._channel.position;
-                this.stop();
-            }
-        }, this);
-        this.addChild(pauseTxt);
+        this.loadSound();
     };
     return IndexPage;
 }(Pages));
