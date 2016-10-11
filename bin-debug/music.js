@@ -60,23 +60,20 @@ var Music = (function (_super) {
         var rap = 180;
         var rapH = 200;
         //play
-        //var music:egret.Bitmap = new egret.Bitmap();
-        //music.texture=egret.Bitmap.$drawImage(music_jpg);
-        //music.load("resource/assets/music.jpg");
-        //music.
-        /* var music:egret.Bitmap = this.createBitmapByName("music_jpg");
-         this.addChild(music);
-         music.x = 20;
-         music.y = 45;
-         music.$setScaleX(0.4);
-         music.$setScaleY(0.4);
-         music.$alpha=1;*/
+        var music = this.music = RES.getRes("music_jpg");
+        music.x = 20;
+        music.y = 45;
+        music.scaleX = 0.4;
+        music.scaleY = 0.4;
+        music.$alpha = 1;
+        this.addChild(music);
         var playTxt = this._playTxt = new egret.TextField();
         playTxt.text = "播放";
         playTxt.size = 60;
         playTxt.x = 80;
         playTxt.y = 200 + rapH;
         playTxt.touchEnabled = true;
+        //music.touchEnabled=true;
         playTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             this.play();
             this.setAllAbled(true);

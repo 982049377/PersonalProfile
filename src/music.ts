@@ -76,24 +76,20 @@ class Music extends egret.DisplayObjectContainer {
     private _pauseTxt:egret.TextField;
     private _stopTxt:egret.TextField;
     private _pauseTime: number = 30;
+    private music:egret.Bitmap;
     
     private init(): void {
         var rap:number = 180;
         var rapH:number = 200;
         
         //play
-
-        //var music:egret.Bitmap = new egret.Bitmap();
-        //music.texture=egret.Bitmap.$drawImage(music_jpg);
-        //music.load("resource/assets/music.jpg");
-        //music.
-       /* var music:egret.Bitmap = this.createBitmapByName("music_jpg");
-        this.addChild(music);
+        var music:egret.Bitmap =this.music= RES.getRes("music_jpg");
         music.x = 20;
         music.y = 45;
-        music.$setScaleX(0.4);
-        music.$setScaleY(0.4);
-        music.$alpha=1;*/
+        music.scaleX=0.4;
+        music.scaleY=0.4;
+        music.$alpha=1;
+        this.addChild(music);
 
         var playTxt: egret.TextField = this._playTxt = new egret.TextField();
         playTxt.text = "播放";
@@ -101,12 +97,13 @@ class Music extends egret.DisplayObjectContainer {
         playTxt.x = 80;
         playTxt.y = 200 + rapH;
         playTxt.touchEnabled = true;
+        //music.touchEnabled=true;
         playTxt.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             this.play();
 
             this.setAllAbled(true);
         }, this);
-        this.addChild(playTxt);
+       this.addChild(playTxt);
 
         //stop
         var stopTxt: egret.TextField = this._stopTxt = new egret.TextField();
