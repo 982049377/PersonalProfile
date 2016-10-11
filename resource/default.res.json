@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bgg_jpg,egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,Fade_mp3,music_jpg,music1_jpg",
+			"keys": "bgg_jpg,egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,Fade_mp3,music_png,stars_jpg",
 			"name": "preload"
 		}
 	],
@@ -67,14 +67,14 @@
 			"name": "Fade_mp3"
 		},
 		{
-			"url": "assets/music.jpg",
+			"url": "assets/music.png",
 			"type": "image",
-			"name": "music_jpg"
+			"name": "music_png"
 		},
 		{
-			"url": "assets/music1.jpg",
+			"url": "assets/stars.jpg",
 			"type": "image",
-			"name": "music1_jpg"
+			"name": "stars_jpg"
 		}
 	]
 }

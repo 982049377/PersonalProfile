@@ -16,17 +16,37 @@
         this._channel=sound.play(0,0);
         
         var Anim_point =0;//定义按钮模式
-        this.music= this.createBitmapByName("music1_jpg");
-        this.music.x = 20+this.music.width/2;
-        this.music.y = 45+this.music.height/2;
+
+        this.music= this.createBitmapByName("music_png");
+        this.music.x = this.music.width/2-5;
+        this.music.y = 150+this.music.height/2;
         this.music.scaleX=0.4;
         this.music.scaleY=0.4;
         this.music.$alpha=1;
-        changeanchor(this.music);
-        this.addChild(this.music);
+        //changeanchor(this.music);
         this.music.touchEnabled = true;
         //stop
         this.music.addEventListener(egret.TouchEvent.TOUCH_TAP, changeAnim, this);
+        changeanchor(this.music);
+       
+        var Sizetimer:egret.Timer = new egret.Timer(3000,0);
+        //注册事件侦听器
+        Sizetimer.addEventListener(egret.TimerEvent.TIMER,ChangeSizeByself,this);
+        Sizetimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+        //开始计时
+        //ChangeSizeByself(this.music);
+        Sizetimer.start();
+
+        var rotationtimer:egret.Timer = new egret.Timer(30,0);
+        //注册事件侦听器
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER,()=>{this.music.rotation += 0.2;},this);
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+        //开始计时
+        rotationtimer.start();
+
+        //ChangeSizeByself(this.music);
+        this.addChild(this.music);
+
         function changeanchor(icon:egret.Bitmap):void {
             icon.anchorOffsetX = icon.width/2;
             icon.anchorOffsetY = icon.height/2;//改变锚点位置
@@ -43,7 +63,14 @@
                     this._channel = null;
                     break;
         } 
-    }
+        }
+        function  ChangeSizeByself(e: egret.Bitmap):void{
+            egret.Tween.get(this.music).to({scaleX:0.3,scaleY:0.3},1000, egret.Ease.sineIn)
+                .wait(500).to({scaleX:0.7,scaleY:0.7},1000, egret.Ease.sineIn).wait(500);
+            //RotationByself(e);
+            //console.log("12315664654899498498");
+        }
+    
 }
     public Creat(Width:number,Hight:number){
  /**  
@@ -60,11 +87,11 @@
         //var move=new MovePage;
         //move.MovePage(IndexPage);
 
-        var sky:egret.Bitmap = this.createBitmapByName("earth_jpg");
+        var sky:egret.Bitmap = this.createBitmapByName("stars_jpg");
         IndexPage.addChild(sky);
         sky.width = Width;
         sky.height = Hight;
-        
+
         this.loadSound();
     }
  }
