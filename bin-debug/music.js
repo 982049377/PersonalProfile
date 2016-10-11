@@ -60,13 +60,14 @@ var Music = (function (_super) {
         var rap = 180;
         var rapH = 200;
         //play
-        var music = this.music = RES.getRes("music_jpg");
-        music.x = 20;
-        music.y = 45;
-        music.scaleX = 0.4;
-        music.scaleY = 0.4;
-        music.$alpha = 1;
-        this.addChild(music);
+        /* var music:egret.Bitmap =this.music= RES.getRes("music_jpg");
+         music.x = 20;
+         music.y = 45;
+         music.scaleX=0.4;
+         music.scaleY=0.4;
+         music.$alpha=1;
+         this.addChild(music);
+ */
         var playTxt = this._playTxt = new egret.TextField();
         playTxt.text = "播放";
         playTxt.size = 60;
