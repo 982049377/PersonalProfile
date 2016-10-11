@@ -106,18 +106,19 @@ var Main = (function (_super) {
     p.createGameScene = function () {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
+        var move = new MovePage;
         var index = new IndexPage();
         var First = new FirstPage();
         var Second = new SecondPage();
         index.Creat(stageW, stageH);
         First.Creat(stageW, stageH);
         Second.Creat(stageW, stageH);
+        move.MovePage(Second);
         this.addChild(Second);
+        move.MovePage(First);
         this.addChild(First);
+        move.MovePage(index);
         this.addChild(index);
-        Second.MovePage(Second);
-        First.MovePage(First);
-        index.MovePage(index);
     };
     return Main;
 }(egret.DisplayObjectContainer));
