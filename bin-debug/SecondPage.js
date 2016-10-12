@@ -29,10 +29,21 @@ var SecondPage = (function (_super) {
         topMask.y = 33;
         SecondPage.addChild(topMask);
         var icon = this.createBitmapByName("eye_jpg");
-        icon.x = 20;
-        icon.y = 45;
-        icon.$setScaleX(0.45);
-        icon.$setScaleY(0.45);
+        icon.x = icon.width / 2 - 50;
+        icon.y = icon.height / 2 - 45;
+        this.changeanchor(icon);
+        icon.$setScaleX(0.4);
+        icon.$setScaleY(0.4);
+        var rotationtimer = new egret.Timer(2000, 0);
+        //注册事件侦听器
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER, changerotation, this);
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, this);
+        //开始计时
+        rotationtimer.start();
+        function changerotation() {
+            var tw = egret.Tween.get(icon);
+            tw.to({ "rotation": 20 }, 800).to({ "rotation": -20 }, 800).wait(400);
+        }
         var offsetX = 0;
         var offsetY = 0;
         icon.$touchEnabled = true;
