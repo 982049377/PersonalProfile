@@ -1,16 +1,11 @@
 {
 	"groups": [
 		{
-			"keys": "bgg_jpg,egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,Fade_mp3,music_png,stars_jpg",
+			"keys": "egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,music_png,stars_jpg,faded_mp3,bg_jpeg,name_png",
 			"name": "preload"
 		}
 	],
 	"resources": [
-		{
-			"url": "assets/bg.jpg",
-			"type": "image",
-			"name": "bgg_jpg"
-		},
 		{
 			"url": "assets/egret_icon.png",
 			"type": "image",
@@ -62,11 +57,6 @@
 			"name": "eye2_jpg"
 		},
 		{
-			"url": "assets/Fade.mp3",
-			"type": "sound",
-			"name": "Fade_mp3"
-		},
-		{
 			"url": "assets/music.png",
 			"type": "image",
 			"name": "music_png"
@@ -75,6 +65,21 @@
 			"url": "assets/stars.jpg",
 			"type": "image",
 			"name": "stars_jpg"
+		},
+		{
+			"url": "assets/faded.mp3",
+			"type": "sound",
+			"name": "faded_mp3"
+		},
+		{
+			"url": "assets/bg.jpeg",
+			"type": "image",
+			"name": "bg_jpeg"
+		},
+		{
+			"name": "name_png",
+			"type": "image",
+			"url": "assets/name.png"
 		}
 	]
 }
