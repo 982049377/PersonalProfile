@@ -133,8 +133,8 @@ var SecondPage = (function (_super) {
         logotxt.size = 40;
         var alphatimer = new egret.Timer(2000, 0);
         //注册事件侦听器
-        alphatimer.addEventListener(egret.TimerEvent.TIMER, changealpha, this);
-        alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, this);
+        alphatimer.addEventListener(egret.TimerEvent.TIMER, changealpha, logotxt);
+        alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, logotxt);
         //开始计时
         alphatimer.start();
         logo.$touchEnabled = true;
@@ -142,23 +142,23 @@ var SecondPage = (function (_super) {
         logo.addEventListener(egret.TouchEvent.TOUCH_TAP, click, this);
         function changealpha() {
             var labeltw = egret.Tween.get(logotxt);
-            labeltw.to({ "alpha": 0 }, 600).to({ "alpha": 1 }, 600, egret.Ease.sineIn).wait(1000);
+            labeltw.to({ "alpha": 1 }, 600).to({ "alpha": 0 }, 600, egret.Ease.sineIn).wait(1000);
         }
         function click() {
             var status = (logoStatus + 1) % 2;
             switch (status) {
                 case 0:
                     egret.Tween.get(label).to({ "alpha": 1 }, 300, egret.Ease.sineIn);
-                    alphatimer.removeEventListener(egret.TimerEvent.TIMER, changealpha, this);
-                    alphatimer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, this);
+                    alphatimer.removeEventListener(egret.TimerEvent.TIMER, changealpha, logotxt);
+                    alphatimer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, logotxt);
                     logoStatus = 0;
-                    logotxt.alpha = 0;
+                    egret.Tween.get(logotxt).to({ "alpha": 0 }, 300, egret.Ease.sineIn);
                     break;
                 case 1:
                     egret.Tween.get(logotxt).to({ "alpha": 1 }, 300, egret.Ease.sineIn);
                     egret.Tween.get(label).to({ "alpha": 0 }, 300, egret.Ease.sineIn);
-                    alphatimer.addEventListener(egret.TimerEvent.TIMER, changealpha, this);
-                    alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, this);
+                    alphatimer.addEventListener(egret.TimerEvent.TIMER, changealpha, logotxt);
+                    alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, logotxt);
                     alphatimer.start();
                     logoStatus = 1;
                     break;

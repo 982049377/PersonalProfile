@@ -2,7 +2,6 @@ class MovePage{
     //private _touchStatus:boolean = false;              //当前触摸状态，按下时，值为true
     private _distance:number = 0; //鼠标点击时，鼠标全局坐标与_bird的位置差
     public MovePage(e:Pages):void{
-       
         //this.page=e;
         e.touchEnabled = true;
         e.addEventListener(egret.TouchEvent.TOUCH_BEGIN,mouseDown,e);
