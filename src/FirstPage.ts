@@ -46,7 +46,7 @@ class FirstPage extends Pages {
         this.changeanchor(icon);
         icon.$setScaleX(0.35);
         icon.$setScaleY(0.35);
-        var rotationtimer:egret.Timer = new egret.Timer(1000,0);
+        var rotationtimer:egret.Timer = new egret.Timer(2000,0);
         //注册事件侦听器
         rotationtimer.addEventListener(egret.TimerEvent.TIMER,changerotation,this);
         rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
@@ -54,7 +54,7 @@ class FirstPage extends Pages {
         rotationtimer.start();
         function changerotation():void{
             var tw=egret.Tween.get(icon);
-            tw.to({"rotation": 20},300).to({"rotation": -20},300).wait(400);
+            tw.to({"rotation": 20},800).to({"rotation": -20},800).wait(400);
         }
 
         icon.$touchEnabled=true;

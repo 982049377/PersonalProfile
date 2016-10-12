@@ -41,7 +41,7 @@ var FirstPage = (function (_super) {
         this.changeanchor(icon);
         icon.$setScaleX(0.35);
         icon.$setScaleY(0.35);
-        var rotationtimer = new egret.Timer(1000, 0);
+        var rotationtimer = new egret.Timer(2000, 0);
         //注册事件侦听器
         rotationtimer.addEventListener(egret.TimerEvent.TIMER, changerotation, this);
         rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { }, this);
@@ -49,7 +49,7 @@ var FirstPage = (function (_super) {
         rotationtimer.start();
         function changerotation() {
             var tw = egret.Tween.get(icon);
-            tw.to({ "rotation": 20 }, 300).to({ "rotation": -20 }, 300).wait(400);
+            tw.to({ "rotation": 20 }, 800).to({ "rotation": -20 }, 800).wait(400);
         }
         icon.$touchEnabled = true;
         icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN, startMove, this);

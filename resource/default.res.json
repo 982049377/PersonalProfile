@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,music_png,stars_jpg,faded_mp3,bg_jpeg,name_png",
+			"keys": "egret_icon_png,description_json,star_jpg,stara_jpg,dawn_jpg,earth_jpg,head_jpg,logo_jpg,eye_jpg,eye2_jpg,music_png,stars_jpg,faded_mp3,bg_jpeg,name_png,logo_png",
 			"name": "preload"
 		}
 	],
@@ -80,6 +80,11 @@
 			"name": "name_png",
 			"type": "image",
 			"url": "assets/name.png"
+		},
+		{
+			"name": "logo_png",
+			"type": "image",
+			"url": "assets/logo.png"
 		}
 	]
 }

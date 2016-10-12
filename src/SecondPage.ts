@@ -108,8 +108,74 @@ function onMove(e:egret.TouchEvent){
         label.textColor = 0xFFFFFF;
         label.fontFamily="KaiTi";
         label.text = "姓名：王恒尊\n\n学号：14081202\n\n专业：数字媒体技术\n\n爱好：小说，音乐，游戏\n\n属性：宅\n\nQ Q：982049377\n\n微信：Monologue_whz\n\n目标：学好编程";
+        label.alpha=0;
 
+        var LogoField:egret.DisplayObjectContainer=new egret.DisplayObjectContainer;
+        LogoField.width=500;
+        LogoField.height=500;
+        LogoField.x=450;
+        LogoField.y=500;
+        SecondPage.addChild(LogoField);
+        
+        var logo:egret.Bitmap = this.createBitmapByName("logo_png");
+        logo.x = logo.width/2-75;
+        logo.y = logo.height/2-100;
+        this.changeanchor(logo);
+        logo.$setScaleX(0.8);
+        logo.$setScaleY(0.8);
+        LogoField.addChild(logo);
 
+        var logotxt:egret.TextField = new egret.TextField();
+        LogoField.addChild( logotxt );
+        logotxt.x=10;
+        logotxt.y=20;
+        logotxt.width = 400;
+        logotxt.height = 400;
+        logotxt.textColor = 0xFFFF00;
+        logotxt.fontFamily="KaiTi";
+        logotxt.text = "Touch";
+        logotxt.strokeColor = 0x0000ff;
+        logotxt.stroke = 2;
+        logotxt.size=40;
+
+        var alphatimer:egret.Timer = new egret.Timer(2000,0);
+        //注册事件侦听器
+        alphatimer.addEventListener(egret.TimerEvent.TIMER,changealpha,this);
+        alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+        //开始计时
+        alphatimer.start();
+
+        logo.$touchEnabled=true;
+        var logoStatus=1;
+        logo.addEventListener(egret.TouchEvent.TOUCH_TAP,click,this)
+
+        function　changealpha(){
+            var labeltw=egret.Tween.get(logotxt);
+            labeltw.to({"alpha":0},600).to({"alpha":1},600, egret.Ease.sineIn ).wait(1000);
+        }
+
+        function click():void{
+            var status=(logoStatus+1)%2;
+            switch(status)
+            {
+                case 0:
+                  egret.Tween.get(label).to({"alpha":1},300, egret.Ease.sineIn );
+                  alphatimer.removeEventListener(egret.TimerEvent.TIMER,changealpha,this)
+                  alphatimer.removeEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+                  logoStatus=0;
+                  logotxt.alpha=0;
+                  break;
+                case 1:
+                  egret.Tween.get(logotxt).to({"alpha":1},300, egret.Ease.sineIn );
+                  egret.Tween.get(label).to({"alpha":0},300, egret.Ease.sineIn );
+                  alphatimer.addEventListener(egret.TimerEvent.TIMER,changealpha,this)
+                  alphatimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+                  alphatimer.start();
+                  logoStatus=1;
+                  break;
+            }
+                  
+        }
         //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
         // Get asynchronously a json configuration file according to name keyword. As for the property of name please refer to the configuration file of resources/resource.json.
         RES.getResAsync("description_json", this.startAnimation, this)
