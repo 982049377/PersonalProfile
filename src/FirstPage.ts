@@ -37,14 +37,26 @@ class FirstPage extends Pages {
 
         var icon:egret.Bitmap = this.createBitmapByName("head_jpg");
         
-        icon.x = 20;
-        icon.y = 45;
-        icon.$setScaleX(0.4);
-        icon.$setScaleY(0.4);
+        icon.x =  icon.width/2-70;
+        icon.y =  icon.height/2-70;
         icon.$alpha=1;
         egret.Tween.get(icon).to({alpha:0},200).wait(300).to({alpha:1},200);
         var offsetX=0;
         var offsetY=0;
+        this.changeanchor(icon);
+        icon.$setScaleX(0.35);
+        icon.$setScaleY(0.35);
+        var rotationtimer:egret.Timer = new egret.Timer(1000,0);
+        //注册事件侦听器
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER,changerotation,this);
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+        //开始计时
+        rotationtimer.start();
+        function changerotation():void{
+            var tw=egret.Tween.get(icon);
+            tw.to({"rotation": 20},300).to({"rotation": -20},300).wait(400);
+        }
+
         icon.$touchEnabled=true;
         icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,startMove,this)
         icon.addEventListener(egret.TouchEvent.TOUCH_END,endMove,this)
@@ -112,7 +124,16 @@ function onMove(e:egret.TouchEvent){
         label.fontFamily="Microsoft YaHei";
         label.text = "个\n\n\n          人\n\n\n                    简\n\n\n                              历";
 
-
+        var rotationtimer:egret.Timer = new egret.Timer(2000,0);
+        //注册事件侦听器
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER,changealpha,this);
+        rotationtimer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,()=>{ },this);
+        //开始计时
+        rotationtimer.start();
+        function　changealpha(){
+            var labeltw=egret.Tween.get(label);
+            labeltw.to({"alpha":0},600).to({"alpha":1},600).wait(800);
+        }
         //根据name关键字，异步获取一个json配置文件，name属性请参考resources/resource.json配置文件的内容。
         // Get asynchronously a json configuration file according to name keyword. As for the property of name please refer to the configuration file of resources/resource.json.
         RES.getResAsync("description_json", this.startAnimation, this);

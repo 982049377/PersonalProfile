@@ -66,4 +66,8 @@ class Pages extends egret.DisplayObjectContainer {
         private changeDescription(textfield:egret.TextField, textFlow:Array<egret.ITextElement>):void {
             textfield.textFlow = textFlow;
         }
+        public changeanchor(icon:egret.Bitmap):void {
+            icon.anchorOffsetX = icon.width/2;
+            icon.anchorOffsetY = icon.height/2;//改变锚点位置
+    }   
 }

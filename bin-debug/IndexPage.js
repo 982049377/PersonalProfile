@@ -59,10 +59,6 @@ var IndexPage = (function (_super) {
             //console.log("12315664654899498498");
         }
     };
-    p.changeanchor = function (icon) {
-        icon.anchorOffsetX = icon.width / 2;
-        icon.anchorOffsetY = icon.height / 2; //改变锚点位置
-    };
     p.Creat = function (Width, Hight) {
         /**
             * 创建主页

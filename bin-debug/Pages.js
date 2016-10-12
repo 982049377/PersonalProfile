@@ -57,6 +57,10 @@ var Pages = (function (_super) {
     p.changeDescription = function (textfield, textFlow) {
         textfield.textFlow = textFlow;
     };
+    p.changeanchor = function (icon) {
+        icon.anchorOffsetX = icon.width / 2;
+        icon.anchorOffsetY = icon.height / 2; //改变锚点位置
+    };
     return Pages;
 }(egret.DisplayObjectContainer));
 egret.registerClass(Pages,'Pages');

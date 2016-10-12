@@ -71,10 +71,7 @@
         }
     
 }
-    private changeanchor(icon:egret.Bitmap):void {
-            icon.anchorOffsetX = icon.width/2;
-            icon.anchorOffsetY = icon.height/2;//改变锚点位置
-    }   
+    
     public Creat(Width:number,Hight:number){
  /**  
      * 创建主页
